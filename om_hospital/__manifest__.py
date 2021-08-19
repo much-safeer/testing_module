@@ -9,7 +9,10 @@
     'category': 'Productivity',
     'website': 'https://www.google.com',
     'depends' : [],
-    'data': [],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/patient.xml'
+    ],
     'demo': [],
     'qweb': [],
     'installable': True,
