@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_election_voter,access.election.voter,model_election_voter,,1,1,1,1
+access_election_candidate,access.election.candidate,model_election_candidate,,1,1,1,1

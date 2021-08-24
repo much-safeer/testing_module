@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="candidates_action" model="ir.actions.act_window">
+        <field name="name">Candidates</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">election.candidate</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create your first candidate!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="election_candidate_root"
+              name="Candidates"
+              parent="election_root"
+              sequence="10"/>
+
+    <menuitem id="candidate_voter"
+              name="Candidates"
+              parent="election_candidate_root"
+              action="candidates_action"
+              sequence="10"/>
+
+</odoo>
