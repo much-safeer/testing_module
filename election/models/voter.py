@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields,api, models
 
 class ElectionVoter(models.Model):
     _name="election.voter"
