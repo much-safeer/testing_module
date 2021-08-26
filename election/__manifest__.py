@@ -8,6 +8,7 @@
     "description": """Election Software""",
     "category": "Productivity",
     "website": "https://www.google.com",
+    'images':[],
     "depends": [],
     "data": ["security/ir.model.access.csv","views/voter.xml","views/candidate.xml"],
     "demo": [],

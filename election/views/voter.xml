@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- 
+        <record id="import_voter_wizard_form" model="ir.ui.view">
+            <field name="name">election.voter.form</field>
+            <field name="model">election.voter</field>
+            <field name="arch" type="xml">
+                <form string="Import Datev">
+                    <sheet>
+                        <group>
+                            <field name="journal_id" string="Journal"/>
+                            <field name="personenkonto" string="Personenkonto"/>
+                            <field name="year" string="Jahr" options='{"type": "number", "step": 1}'/>
+                            <field name="default_partner" string="Default Partner"/>
+                        </group>
+                        <group>
+                            <field name="file" string="CSV"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <div>
+                          <p style="float:right;">
+                              <button string="Cancel" class="oe_link" special="cancel"/>
+                          </p>
+                        </div>
+                        <div style="clear:both;"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+    -->
+
     <record id="view_voter_tree" model="ir.ui.view">
         <field name="name">election.voter.tree</field>
         <field name="model">election.voter</field>
@@ -25,7 +55,18 @@
                             <field name="name" />
                             <field name="vote" />
                     </group>
+                    <!-- <group>
+                        <field name="file" string="CSV"/>
+                    </group> -->
                 </sheet> 
+                <!-- <footer>
+                    <div>
+                      <p style="float:right;">
+                          <button string="Cancel" class="oe_link" special="cancel"/>
+                      </p>
+                    </div>
+                    <div style="clear:both;"/>
+                </footer> -->
             </form>
         </field>
     </record>
