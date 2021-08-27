@@ -6,8 +6,9 @@
         <field name="arch" type="xml">
             <form string="Import Votes">
                 <group>
-                    <field name="voter_name"/>
-                    <field name="candidate_name"/>
+                    <!-- <field name="voter_name"/>
+                    <field name="candidate_name"/> -->
+                    <field name="data" />
                 </group>
                 <footer>
                     <button name="import_votes" string="Create" type="object" class="btn-primary"/>

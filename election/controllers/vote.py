@@ -3,7 +3,6 @@ from odoo.http import request, content_disposition
 import json
 from werkzeug import Response
 from werkzeug.exceptions import Unauthorized, BadRequest
-import logging
 
 class Vote(http.Controller):
     
