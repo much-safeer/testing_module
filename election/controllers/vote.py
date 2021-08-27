@@ -29,14 +29,19 @@ class Vote(http.Controller):
         json_response = json.dumps(leading_candidate, sort_keys=True)
         return Response(json_response, content_type="application/json")
 
-    @http.route("/vote", methods=["POST"], type="json", csrf=False)
-    def vote(self, voter_name, candidate_name):
-        candidate = request.env["election.candidate"].search(
-            [("name", "=", candidate_name)]
+    @http.route("/vote", methods=["POST"], type="http", csrf=False)
+    def vote(self, voter_id, candidate_id):
+        candidate = (
+            request.env["election.candidate"].sudo().search([("id", "=", candidate_id)])
         )
-        if len(candidate):
-            return "Invalid Candidate Name"
-        request.env["election.voter"].sudo().create(
-            {"name": voter_name, "vote": candidate["id"]}
-        )
-        return "User Created"
+        if len(candidate) < 1:
+            return "Invalid Candidate Id"
+
+        voter = request.env["election.voter"].sudo().search([("id", "=", voter_id)])
+
+        if len(voter) < 1:
+            return "Invalid Voter Id"
+
+        for v in voter:
+            v.vote = int(candidate_id)
+        return "Vote Updated"
