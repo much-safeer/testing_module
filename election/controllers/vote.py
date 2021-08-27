@@ -39,8 +39,8 @@ class Vote(http.Controller):
     
     @http.route('/vote',methods=['POST'], type="json", csrf=False)
     def vote(self, voter_name, candidate_name):
-        candidate = request.env['election.candidate'].search([('name','=',candidate_name)])
-        if not candidate:
+        candidate = (request.env['election.candidate'].search([('name','=',candidate_name)]))
+        if len(candidate):
             return f"Invalid Candidate Name"
         request.env['election.voter'].sudo().create({
                 'name':voter_name,

@@ -1,4 +1,4 @@
-from odoo import fields,api, models
+from odoo import fields,api, models, exceptions
 import logging
 import csv
 
@@ -10,10 +10,18 @@ class ImportVotesWizard(models.TransientModel):
     candidate_name=fields.Char(string="candidate_name", required=True)
 
     def import_votes(self):
-        with open('data.csv', 'r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                _logger = logging.getLogger(__name__)
-                _logger.info('------------------------')
-                _logger.info(row)
-                _logger.info('------------------------')
+        voters=(self.env['election.voter'].search([('name','=',self.voter_name)]))
+        candidates=(self.env['election.candidate'].search([('name','=',self.candidate_name)]))
+
+        if len(candidates)<1:
+            raise exceptions.UserError("Invalid Candidate")
+
+        if len(voters)<1:
+            self.env['election.voter'].create({
+                "name":self.voter_name,
+                "vote":candidates[0].id
+            })
+            return
+
+        for voter in voters:
+            voter.vote = candidates[0].id

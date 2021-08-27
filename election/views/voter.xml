@@ -99,4 +99,10 @@
               action="voters_action"
               sequence="10"/>
 
+    <menuitem id="menu_import_votes_wizard"
+              name="Import Votes"
+              parent="election_voter_root"
+              action="import_votes_wizard_action"
+              sequence="20"/>
+
 </odoo>
