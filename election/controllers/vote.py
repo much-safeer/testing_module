@@ -22,14 +22,12 @@ class Vote(http.Controller):
 
     @http.route('/get_leading_candidate', type="http", csrf=False)
     def get_leading_candidate(self):
-        candidates = request.env['election.candidate'].search_read([])
+        candidates = request.env['election.candidate'].search_read([],order="total_votes desc", limit=1)
         
-        _logger = logging.getLogger(__name__)
-        _logger.info('------------------------')
-        # _logger.info(sqlquery)
-        _logger.info(candidates)
-        _logger.info('------------------------')
-        _logger.info(candidates[-1])
+        # _logger = logging.getLogger(__name__)
+        # _logger.info('------------------------')
+        # _logger.info(candidates)
+        # _logger.info('------------------------')
 
         leading_candidate = {
             "name":candidates[-1]['name'],
