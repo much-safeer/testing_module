@@ -74,8 +74,7 @@
         </field>
     </record>
 
-    <menuitem id="election_root" name="Election" sequence="10"/>
-
+    <menuitem id="election_root" name="Election" web_icon="election,static/description/icon.png" sequence="10"/>
 
     <menuitem id="election_voter_root" name="Voters" parent="election_root" sequence="10"/>
 
