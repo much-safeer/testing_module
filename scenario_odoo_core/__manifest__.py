@@ -5,7 +5,6 @@
         Learn to navigate Odoo Core.
     """,
     "description": """
-       
     """,
     "author": "much. GmbH",
     "website": "https://muchconsulting.de/",
