@@ -53,9 +53,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                 <div class="oe_title">
-                    <h1><field name="name" readonly="1"/></h1>
-                </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="name" />
@@ -66,7 +68,7 @@
                             <field name="note" />
                         </group>
                     </group>
-                </sheet> 
+                </sheet>
             </form>
         </field>
     </record>
@@ -77,7 +79,7 @@
         <field name="arch" type="xml">
             <search string="Patients">
                 <field name="name"/>
-                <field name="note"/> 
+                <field name="note"/>
                 <separator/>
                 <filter string="Male" name="male" domain="[('gender','=','male')]" />
                 <filter string="Female" name="female" domain="[('gender','=','female')]" />
@@ -102,20 +104,11 @@
         </field>
     </record>
 
-    <menuitem id="hospital_root"
-              name="Hospital"
-              sequence="10"/>
-    
+    <menuitem id="hospital_root" name="Hospital" sequence="10"/>
 
-    <menuitem id="hospital_patient_root"
-              name="Patients"
-              parent="hospital_root"
-              sequence="10"/>
 
-    <menuitem id="hospital_patient"
-              name="Patients"
-              parent="hospital_patient_root"
-              action="patient_action"
-              sequence="10"/>
+    <menuitem id="hospital_patient_root" name="Patients" parent="hospital_root" sequence="10"/>
+
+    <menuitem id="hospital_patient" name="Patients" parent="hospital_patient_root" action="patient_action" sequence="10"/>
 
 </odoo>

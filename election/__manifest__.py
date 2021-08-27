@@ -8,13 +8,13 @@
     "description": """Election Software""",
     "category": "Productivity",
     "website": "https://www.google.com",
-    'images':[],
+    "images": [],
     "depends": [],
     "data": [
         "security/ir.model.access.csv",
         "wizard/import_votes_view.xml",
         "views/voter.xml",
-        "views/candidate.xml"
+        "views/candidate.xml",
     ],
     "demo": [],
     "qweb": [],

@@ -1,8 +1,9 @@
-from odoo import fields,api, models
+from odoo import fields, models
+
 
 class ElectionVoter(models.Model):
-    _name="election.voter"
-    _description="Voter data"
+    _name = "election.voter"
+    _description = "Voter data"
 
-    name=fields.Char(string="Name", required=True)
-    vote=fields.Many2one("election.candidate",string="Candidate", required=True)
+    name = fields.Char(string="Name", required=True)
+    vote = fields.Many2one("election.candidate", string="Candidate", required=True)

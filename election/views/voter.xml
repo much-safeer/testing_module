@@ -48,25 +48,16 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                 <div class="oe_title">
-                    <h1><field name="name" readonly="1"/></h1>
-                </div>
-                    <group>
-                            <field name="name" />
-                            <field name="vote" />
-                    </group>
-                    <!-- <group>
-                        <field name="file" string="CSV"/>
-                    </group> -->
-                </sheet> 
-                <!-- <footer>
-                    <div>
-                      <p style="float:right;">
-                          <button string="Cancel" class="oe_link" special="cancel"/>
-                      </p>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
                     </div>
-                    <div style="clear:both;"/>
-                </footer> -->
+                    <group>
+                        <field name="name" />
+                        <field name="vote" />
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -83,26 +74,13 @@
         </field>
     </record>
 
-    <menuitem id="election_root"
-              name="Election"
-              sequence="10"/>
-    
+    <menuitem id="election_root" name="Election" sequence="10"/>
 
-    <menuitem id="election_voter_root"
-              name="Voters"
-              parent="election_root"
-              sequence="10"/>
 
-    <menuitem id="election_voter"
-              name="Voters"
-              parent="election_voter_root"
-              action="voters_action"
-              sequence="10"/>
+    <menuitem id="election_voter_root" name="Voters" parent="election_root" sequence="10"/>
 
-    <menuitem id="menu_import_votes_wizard"
-              name="Import Votes"
-              parent="election_voter_root"
-              action="import_votes_wizard_action"
-              sequence="20"/>
+    <menuitem id="election_voter" name="Voters" parent="election_voter_root" action="voters_action" sequence="10"/>
+
+    <menuitem id="menu_import_votes_wizard" name="Import Votes" parent="election_voter_root" action="import_votes_wizard_action" sequence="20"/>
 
 </odoo>

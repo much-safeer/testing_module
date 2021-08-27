@@ -19,15 +19,17 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                 <div class="oe_title">
-                    <h1><field name="name" readonly="1"/></h1>
-                </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
-                            <field name="name" />
-                            <field name="voter_ids" widget="many2many_tags"/>
-                            <field name="total_votes" />
+                        <field name="name" />
+                        <field name="voter_ids" widget="many2many_tags"/>
+                        <field name="total_votes" />
                     </group>
-                </sheet> 
+                </sheet>
             </form>
         </field>
     </record>
@@ -45,15 +47,8 @@
     </record>
 
 
-    <menuitem id="election_candidate_root"
-              name="Candidates"
-              parent="election_root"
-              sequence="10"/>
+    <menuitem id="election_candidate_root" name="Candidates" parent="election_root" sequence="10"/>
 
-    <menuitem id="candidate_voter"
-              name="Candidates"
-              parent="election_candidate_root"
-              action="candidates_action"
-              sequence="10"/>
+    <menuitem id="candidate_voter" name="Candidates" parent="election_candidate_root" action="candidates_action" sequence="10"/>
 
 </odoo>
