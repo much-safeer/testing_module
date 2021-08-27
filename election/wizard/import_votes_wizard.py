@@ -1,4 +1,4 @@
-from odoo import fields, api, models, exceptions
+from odoo import fields, models, exceptions
 import csv
 import base64
 import io

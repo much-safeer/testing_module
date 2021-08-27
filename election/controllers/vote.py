@@ -35,8 +35,8 @@ class Vote(http.Controller):
             [("name", "=", candidate_name)]
         )
         if len(candidate):
-            return f"Invalid Candidate Name"
+            return "Invalid Candidate Name"
         request.env["election.voter"].sudo().create(
             {"name": voter_name, "vote": candidate["id"]}
         )
-        return f"User Created"
+        return "User Created"
