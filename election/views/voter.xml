@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- Please avoid committing commented code   -->
     <!-- 
         <record id="import_voter_wizard_form" model="ir.ui.view">
             <field name="name">election.voter.form</field>

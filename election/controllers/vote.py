@@ -31,6 +31,15 @@ class Vote(http.Controller):
 
     @http.route("/vote", methods=["POST"], type="http", csrf=False)
     def vote(self, voter_id, candidate_id):
+        # FIXME please make sure this route works if we use the
+        # below curl, a post request should work with the paramters
+        # in the body
+        # curl - -header
+        # "Content-Type: application/json" \
+        # --request
+        # POST \
+        # --data '{"voter_id":1,"candidate_id":2}' \
+        # http://localhost:8069/vote
         candidate = (
             request.env["election.candidate"].sudo().search([("id", "=", candidate_id)])
         )

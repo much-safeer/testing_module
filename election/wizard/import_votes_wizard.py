@@ -11,12 +11,15 @@ class ImportVotesWizard(models.TransientModel):
     data = fields.Binary(string="Upload CSV", required=True)
 
     def import_votes(self):
+
+        # FIXME please use a logger not print
         print("CLicked")
         print(self.data)
         csv_data = base64.b64decode(self.data)
         data_file = io.StringIO(csv_data.decode("utf-8"))
         data_file.seek(0)
         file_reader = []
+        # FIXME use a dictreader, it's neater ;)
         csv_reader = csv.reader(data_file, delimiter=",")
         file_reader.extend(csv_reader)
 
