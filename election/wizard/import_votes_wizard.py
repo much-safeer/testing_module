@@ -1,7 +1,6 @@
 from odoo import fields, models, exceptions
 import csv
 import base64
-import io
 
 
 class ImportVotesWizard(models.TransientModel):
@@ -11,28 +10,21 @@ class ImportVotesWizard(models.TransientModel):
     data = fields.Binary(string="Upload CSV", required=True)
 
     def import_votes(self):
-
-        # FIXME please use a logger not print
-        print("CLicked")
-        print(self.data)
-        csv_data = base64.b64decode(self.data)
-        data_file = io.StringIO(csv_data.decode("utf-8"))
-        data_file.seek(0)
-        file_reader = []
         # FIXME use a dictreader, it's neater ;)
-        csv_reader = csv.reader(data_file, delimiter=",")
-        file_reader.extend(csv_reader)
+        reader = csv.DictReader(base64.b64decode(self.data).decode("utf-8").split("\n"))
 
-        for row in file_reader:
-            voters = self.env["election.voter"].search([("name", "=", row[0])])
-            candidates = self.env["election.candidate"].search([("name", "=", row[1])])
+        for row in reader:
+            voters = self.env["election.voter"].search([("name", "=", row["voter_id"])])
+            candidates = self.env["election.candidate"].search(
+                [("name", "=", row["candidate_id"])]
+            )
 
             if len(candidates) < 1:
                 raise exceptions.UserError("Invalid Candidate")
 
             if len(voters) < 1:
                 self.env["election.voter"].create(
-                    {"name": row[0], "vote": candidates[0].id}
+                    {"name": row["voter_id"], "vote": candidates[0].id}
                 )
                 continue
 

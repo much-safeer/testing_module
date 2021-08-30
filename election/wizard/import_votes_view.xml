@@ -6,8 +6,6 @@
         <field name="arch" type="xml">
             <form string="Import Votes">
                 <group>
-                    <!-- <field name="voter_name"/>
-                    <field name="candidate_name"/> -->
                     <field name="data" />
                 </group>
                 <footer>

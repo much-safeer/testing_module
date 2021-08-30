@@ -29,8 +29,8 @@ class Vote(http.Controller):
         json_response = json.dumps(leading_candidate, sort_keys=True)
         return Response(json_response, content_type="application/json")
 
-    @http.route("/vote", methods=["POST"], type="http", csrf=False)
-    def vote(self, voter_id, candidate_id):
+    @http.route("/vote", methods=["POST"], type="json", csrf=False)
+    def vote(self):
         # FIXME please make sure this route works if we use the
         # below curl, a post request should work with the paramters
         # in the body
@@ -40,6 +40,11 @@ class Vote(http.Controller):
         # POST \
         # --data '{"voter_id":1,"candidate_id":2}' \
         # http://localhost:8069/vote
+        data = json.loads(request.httprequest.data)
+
+        candidate_id = data["candidate_id"]
+        voter_id = data["voter_id"]
+
         candidate = (
             request.env["election.candidate"].sudo().search([("id", "=", candidate_id)])
         )
